@@ -1,0 +1,30 @@
+<div class="flex justify-center">
+  <form [formGroup]="processForm" class="w-1/3 py-5">
+    <p>
+      <mat-form-field
+        class="w-full"
+        appearance="fill"
+        [hideRequiredMarker]="hideRequiredControl.value"
+        [floatLabel]="floatLabelControl.value"
+      >
+        <input formControlName="name" id="name" matInput placeholder="Nome do processo" required />
+        <mat-error *ngIf="f.name.hasError('required')">Campo obrigatório</mat-error>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <mat-form-field class="w-full">
+        <input formControlName="date" id="date-id" matInput [matDatepicker]="picker" placeholder="Data" required />
+        <mat-error *ngIf="f.date.hasError('required')">Campo obrigatório</mat-error>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </p>
+
+    <p>
+      <button class="decrease-horizontal-padding" type="submit" mat-raised-button color="primary" (click)="submit()">
+        Salvar
+      </button>
+    </p>
+  </form>
+</div>
